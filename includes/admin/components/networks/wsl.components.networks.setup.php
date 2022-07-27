@@ -62,7 +62,7 @@ function wsl_component_networks_setup()
 						if( ! get_option( 'wsl_settings_' . $provider_id . '_enabled' ) )
 						{
 							?>
-								<a href="options-general.php?page=wordpress-social-login&wslp=networks&enable=<?php echo $provider_id ?>&_=<?php echo time(); ?>#setup<?php echo strtolower( $provider_id ) ?>"><img src="<?php echo $assets_base_url . '32x32/icondock/' . strtolower( $provider_id ) . '.png' ?>" alt="<?php echo $provider_name ?>" title="<?php echo $provider_name ?>" /></a>
+								<a href="options-general.php?page=wordpress-social-login&wslp=networks&enable=<?php echo $provider_id ?>&_=<?php echo time(); ?>#setup<?php echo strtolower( $provider_id ) ?>"><img src="<?php echo $assets_base_url . '32x32/wpzoom/' . strtolower( $provider_id ) . '.png' ?>" alt="<?php echo $provider_name ?>" title="<?php echo $provider_name ?>" /></a>
 							<?php
 
 							$nb_used--;

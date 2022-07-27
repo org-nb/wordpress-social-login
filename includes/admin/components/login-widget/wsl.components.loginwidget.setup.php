@@ -87,8 +87,7 @@ function wsl_component_loginwidget_setup_basic_settings()
 			<td>
 				<?php
 					$icon_sets = array(
-						'wpzoom'   => "WPZOOM social networking icon set",
-						'icondock' => "Icondock vector social media icons",
+						'wpzoom'   => "WPZOOM social networking icon set"
 					);
 
 					$icon_sets = apply_filters( 'wsl_component_loginwidget_setup_alter_icon_sets', $icon_sets );

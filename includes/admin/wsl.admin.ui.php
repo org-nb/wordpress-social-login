@@ -202,7 +202,8 @@ function wsl_admin_ui_header( $wslp = null )
 	<div class="alignright">
 		<a style="font-size: 0.9em; text-decoration: none;" target="_blank" href="http://miled.github.io/wordpress-social-login/documentation.html"><?php _wsl_e('Docs', 'wordpress-social-login') ?></a> -
 		<a style="font-size: 0.9em; text-decoration: none;" target="_blank" href="http://miled.github.io/wordpress-social-login/support.html"><?php _wsl_e('Support', 'wordpress-social-login') ?></a> -
-		<a style="font-size: 0.9em; text-decoration: none;" target="_blank" href="https://github.com/miled/wordpress-social-login"><?php _wsl_e('Github', 'wordpress-social-login') ?></a>
+		<a style="font-size: 0.9em; text-decoration: none;" target="_blank" href="https://github.com/miled/wordpress-social-login"><?php _wsl_e('Github', 'wordpress-social-login') ?></a> -
+		<a style="font-size: 0.9em; text-decoration: none;" target="_blank" href="https://github.com/linrador"><?php _wsl_e('Modified by Linrador', 'wordpress-social-login') ?></a>
 	</div>
 
 	<h1 <?php if( is_rtl() ) echo 'style="margin: 20px 0;"'; ?>>
@@ -423,12 +424,12 @@ function wsl_admin_welcome_panel()
 				</p>
 
 				<ul style="margin-left:25px;">
-					<li><?php _wsl_e('WSL is now fully migrated to Hybridauth 3.5', 'wordpress-social-login') ?></li>
-					<li><?php _wsl_e("Reworked providers Callback URLs and it's a breaking change! See up top notice", 'wordpress-social-login') ?></li>
-					<li><?php _wsl_e('Added serval new providers: Amazon, Discord and Spotify to name a few', 'wordpress-social-login') ?></li>
-					<li><?php _wsl_e('Removal of a number of currently defunct identity providers ', 'wordpress-social-login') ?></li>
-					<li><?php _wsl_e('Authentication widgets and forms design overhall', 'wordpress-social-login') ?></li>
-					<li><?php _wsl_e('Various fixes and improvements', 'wordpress-social-login') ?></li>
+					<li><?php _wsl_e("Added new provider: Apple", 'wordpress-social-login') ?></li>
+					<li><?php _wsl_e("Updated Hybridauth to 3.8.1 (2022-07-12)", 'wordpress-social-login') ?></li>
+					<li><?php _wsl_e("Updated WPZOOM icon pack ", 'wordpress-social-login') ?></li>
+					<li><?php _wsl_e("Updated WPZOOM icon as default icons ", 'wordpress-social-login') ?></li>
+					<li><?php _wsl_e("Updated email syntax in account registration to represent your home URL ", 'wordpress-social-login') ?></li>
+					<li><?php _wsl_e("Removed Iconstack icon pack ", 'wordpress-social-login') ?></li>
 				</ul>
 			</td>
 		</tr>

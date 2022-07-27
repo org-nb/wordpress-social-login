@@ -649,7 +649,7 @@ function wsl_process_login_create_wp_user( $provider, $hybridauth_user_profile, 
 		// generate an email if none
 		if( ! isset ( $user_email ) OR ! is_email( $user_email ) )
 		{
-			$user_email = strtolower( $provider . "_user_" . $user_login ) . '@example.com';
+			$user_email = strtolower( $user_login ) . '@' . str_replace('http://', '', str_replace('https://', '', get_home_url()));
 		}
 
 		// email should be unique
@@ -657,7 +657,7 @@ function wsl_process_login_create_wp_user( $provider, $hybridauth_user_profile, 
 		{
 			do
 			{
-				$user_email = md5( uniqid( wp_rand( 10000, 99000 ) ) ) . '@example.com';
+				$user_email = md5( uniqid( wp_rand( 10000, 99000 ) ) ) . '@' . str_replace('http://', '', str_replace('https://', '', get_home_url()));
 			}
 			while( wsl_wp_email_exists( $user_email ) );
 		}
@@ -678,14 +678,11 @@ function wsl_process_login_create_wp_user( $provider, $hybridauth_user_profile, 
 	$userdata = array(
 		'user_login'    => $user_login,
 		'user_email'    => $user_email,
-
 		'display_name'  => $display_name,
-
 		'first_name'    => $hybridauth_user_profile->firstName,
 		'last_name'     => $hybridauth_user_profile->lastName,
 		'user_url'      => $hybridauth_user_profile->profileURL,
 		'description'   => $hybridauth_user_profile->description,
-
 		'user_pass'     => wp_generate_password()
 	);
 

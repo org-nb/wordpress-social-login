@@ -2,8 +2,8 @@
 Contributors: miled
 Tags: login, register, comment, social login, social networks, facebook, google, twitter, reddit, linkedin, instagram, vkontakte, github, steam, dribbble, twitch.tv
 Requires at least: 3.0
-Tested up to: 5.5
-Stable tag: 3.0.5
+Tested up to: 6.1
+Stable tag: 3.1.0
 License: MIT License
 License URI: http://opensource.org/licenses/MIT
 Donate link: https://www.redcross.org/quickdonate/index.jsp
@@ -67,10 +67,15 @@ The user guide and frequently asked questions can be found at http://miled.githu
 
 == Changelog ==
 
-= 3.0.5 =
 
-* Update Hybridauth 3.7.1-dev
-* Minor fixes and improvements.
+= 3.1.0 =
+
+* Added new provider: Apple
+* Updated Hybridauth to 3.8.1 (2022-07-12)
+* Updated WPZOOM icon pack
+* Updated WPZOOM icon as default icons
+* Updated email syntax in account registration to represent your home URL
+* Removed Iconstack icon pack
 
 = 3.0.4 =
 

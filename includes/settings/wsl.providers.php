@@ -44,6 +44,13 @@ $WORDPRESS_SOCIAL_LOGIN_PROVIDERS_CONFIG = ARRAY(
 		"default_network"   => true,
 	),
 	ARRAY(
+		"provider_id"       => "Apple",
+		"provider_name"     => "Apple",
+		"require_client_id" => true,
+		"callback"          => true,
+		"new_app_link"      => "https://developer.apple.com/",
+	),
+	ARRAY(
 		"provider_id"       => "Twitter",
 		"provider_name"     => "Twitter",
 		"callback"          => true,
