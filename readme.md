@@ -1,4 +1,14 @@
+
+
 ## [WordPress Social Login](https://wordpress.org/plugins/wordpress-social-login/)
+
+**DISCLAIMER**
+
+This is an updated version of Wordpress Social Login (originally made by [miled](https://github.com/miled/wordpress-social-login))
+
+
+
+Original readme:
 
 **WordPress Social Login** is a free and open source plugin made by the community, for the community.
 
