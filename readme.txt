@@ -73,8 +73,9 @@ The user guide and frequently asked questions can be found at http://miled.githu
 * Added new provider: Apple
 * Updated Hybridauth to 3.8.1 (2022-07-12)
 * Updated WPZOOM icon pack
-* Updated WPZOOM icon as default icons
 * Updated email syntax in account registration to represent your home URL
+* Set WPZOOM icon as default icons
+* Fixed some spelling errors
 * Removed Iconstack icon pack
 
 = 3.0.4 =

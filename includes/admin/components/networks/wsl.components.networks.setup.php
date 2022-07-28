@@ -207,8 +207,8 @@ function wsl_component_networks_setup()
 								<b><?php _wsl_e("Notes", 'wordpress-social-login') ?>:</b>
 							</p>
 							<p>
-								      1. <?php echo sprintf( _wsl__("<b>%s</b> do not require an external application, however if the Web API Key is provided, then WSL will be able to get more information about the connected %s users", 'wordpress-social-login'), $provider_name , $provider_name ) ?>.
-								<br />2. <?php echo sprintf( _wsl__("<b>%s</b> do not provide their user's email address and by default a random email will then be generated for them instead", 'wordpress-social-login'), $provider_name ) ?>.
+								      1. <?php echo sprintf( _wsl__("<b>%s</b> does not require an external application, however if the Web API Key is provided, then WSL will be able to get more information about the connected %s users", 'wordpress-social-login'), $provider_name , $provider_name ) ?>.
+								<br />2. <?php echo sprintf( _wsl__("<b>%s</b> does not provide their user's email address and by default a random email will then be generated for them instead", 'wordpress-social-login'), $provider_name ) ?>.
 
 								<?php _wsl_e('To change this behaviour and to force new registered users to provide their emails before they get in, goto <b><a href="options-general.php?page=wordpress-social-login&wslp=bouncer">Bouncer</a></b> and enable <b>Profile Completion</b>', 'wordpress-social-login') ?>.
 							</p>
@@ -224,7 +224,7 @@ function wsl_component_networks_setup()
 							<p>
 								<b><?php _wsl_e("Note", 'wordpress-social-login') ?>:</b>
 
-								<?php echo sprintf( _wsl__("<b>%s</b> do not provide their user's email address and by default a random email will then be generated for them instead", 'wordpress-social-login'), $provider_name ) ?>.
+								<?php echo sprintf( _wsl__("<b>%s</b> does not provide their user's email address and by default a random email will then be generated for them instead", 'wordpress-social-login'), $provider_name ) ?>.
 
 								<?php _wsl_e('To change this behaviour and to force new registered users to provide their emails before they get in, goto <b><a href="options-general.php?page=wordpress-social-login&wslp=bouncer">Bouncer</a></b> and enable <b>Profile Completion</b>', 'wordpress-social-login') ?>.
 							</p>

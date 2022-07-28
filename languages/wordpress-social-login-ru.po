@@ -1749,7 +1749,7 @@ msgstr "Секрет приложения"
 #: includes/admin/components/networks/wsl.components.networks.setup.php:163
 #, php-format
 msgid ""
-"<b>%s</b> do not require an external application, however if the Web API Key "
+"<b>%s</b> does not require an external application, however if the Web API Key "
 "is provided, then WSL will be able to get more information about the "
 "connected %s users"
 msgstr ""
@@ -1761,7 +1761,7 @@ msgstr ""
 #: includes/admin/components/networks/wsl.components.networks.setup.php:180
 #, php-format
 msgid ""
-"<b>%s</b> do not provide their user's email address and by default a random "
+"<b>%s</b> does not provide their user's email address and by default a random "
 "email will then be generated for them instead"
 msgstr ""
 "<b>%s</b> не предоставляет адрес электронной почты своего пользователя и по "

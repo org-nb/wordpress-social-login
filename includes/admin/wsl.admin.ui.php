@@ -426,10 +426,11 @@ function wsl_admin_welcome_panel()
 				<ul style="margin-left:25px;">
 					<li><?php _wsl_e("Added new provider: Apple", 'wordpress-social-login') ?></li>
 					<li><?php _wsl_e("Updated Hybridauth to 3.8.1 (2022-07-12)", 'wordpress-social-login') ?></li>
-					<li><?php _wsl_e("Updated WPZOOM icon pack ", 'wordpress-social-login') ?></li>
-					<li><?php _wsl_e("Updated WPZOOM icon as default icons ", 'wordpress-social-login') ?></li>
-					<li><?php _wsl_e("Updated email syntax in account registration to represent your home URL ", 'wordpress-social-login') ?></li>
-					<li><?php _wsl_e("Removed Iconstack icon pack ", 'wordpress-social-login') ?></li>
+					<li><?php _wsl_e("Updated WPZOOM icon pack", 'wordpress-social-login') ?></li>
+					<li><?php _wsl_e("Updated email syntax in account registration to represent your home URL", 'wordpress-social-login') ?></li>
+					<li><?php _wsl_e("Set WPZOOM icon as default icons", 'wordpress-social-login') ?></li>
+					<li><?php _wsl_e("Fixed some spelling errors", 'wordpress-social-login') ?></li>
+					<li><?php _wsl_e("Removed Iconstack icon pack", 'wordpress-social-login') ?></li>
 				</ul>
 			</td>
 		</tr>
