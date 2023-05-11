@@ -56,7 +56,8 @@ function wsl_get_wsl_users_count()
 {
 	global $wpdb;
 
-	$sql = "SELECT COUNT( distinct user_id ) AS items FROM `{$wpdb->prefix}wslusersprofiles`"; 
+	$db_prefix = wsl_get_userprofile_db_prefix();
+	$sql = "SELECT COUNT( distinct user_id ) AS items FROM `{$db_prefix}wslusersprofiles`"; 
 
 	return $wpdb->get_var( $sql );
 }
@@ -82,7 +83,8 @@ function wsl_get_stored_hybridauth_user_profiles_count()
 {
 	global $wpdb;
 
-	$sql = "SELECT COUNT(`id`) FROM `{$wpdb->prefix}wslusersprofiles`"; 
+	$db_prefix = wsl_get_userprofile_db_prefix();
+	$sql = "SELECT COUNT(`id`) FROM `{$db_prefix}wslusersprofiles`"; 
 
 	return $wpdb->get_var( $sql );
 }
@@ -93,7 +95,8 @@ function wsl_get_stored_hybridauth_user_profiles_count_by_provider( $provider )
 {
 	global $wpdb;
 
-	$sql = "SELECT COUNT(`id`) FROM `{$wpdb->prefix}wslusersprofiles` WHERE provider = %s";
+	$db_prefix = wsl_get_userprofile_db_prefix();
+	$sql = "SELECT COUNT(`id`) FROM `{$db_prefix}wslusersprofiles` WHERE provider = %s";
 
 	return $wpdb->get_var( $wpdb->prepare( $sql, $provider ) );
 }
@@ -104,7 +107,8 @@ function wsl_get_stored_hybridauth_user_profiles_count_by_field( $field )
 {
 	global $wpdb;
 
-	$sql = "SELECT $field, COUNT( * ) AS items FROM `{$wpdb->prefix}wslusersprofiles` GROUP BY $field ORDER BY items DESC";
+	$db_prefix = wsl_get_userprofile_db_prefix();
+	$sql = "SELECT $field, COUNT( * ) AS items FROM `{$db_prefix}wslusersprofiles` GROUP BY $field ORDER BY items DESC";
 
 	return $wpdb->get_results( $sql );
 }
@@ -115,7 +119,8 @@ function wsl_get_stored_hybridauth_user_profiles_grouped_by_user_id( $offset, $l
 {
 	global $wpdb;
 
-	$sql = "SELECT * FROM `{$wpdb->prefix}wslusersprofiles` GROUP BY user_id LIMIT %d, %d";
+	$db_prefix = wsl_get_userprofile_db_prefix();
+	$sql = "SELECT * FROM `{$db_prefix}wslusersprofiles` GROUP BY user_id LIMIT %d, %d";
 
 	return $wpdb->get_results( $wpdb->prepare( $sql, $offset, $limit ) );
 }
@@ -126,7 +131,8 @@ function wsl_get_stored_hybridauth_user_contacts_count_by_user_id( $user_id )
 {
 	global $wpdb;
 
-	$sql = "SELECT COUNT( * ) FROM `{$wpdb->prefix}wsluserscontacts` where user_id = %d";
+	$db_prefix = wsl_get_userprofile_db_prefix();
+	$sql = "SELECT COUNT( * ) FROM `{$db_prefix}wsluserscontacts` where user_id = %d";
 
 	return $wpdb->get_var( $wpdb->prepare( $sql, $user_id ) );
 }
@@ -137,7 +143,8 @@ function wsl_get_stored_hybridauth_user_contacts_by_user_id( $user_id, $offset, 
 {
 	global $wpdb;
 
-	$sql = "SELECT * FROM `{$wpdb->prefix}wsluserscontacts` where user_id = %d LIMIT %d, %d";
+	$db_prefix = wsl_get_userprofile_db_prefix();
+	$sql = "SELECT * FROM `{$db_prefix}wsluserscontacts` where user_id = %d LIMIT %d, %d";
 
 	return $wpdb->get_results( $wpdb->prepare( $sql, $user_id, $offset, $limit ) );
 }
@@ -148,7 +155,8 @@ function wsl_get_stored_hybridauth_user_id_by_provider_and_provider_uid( $provid
 {
 	global $wpdb;
 
-	$sql = "SELECT user_id FROM `{$wpdb->prefix}wslusersprofiles` WHERE provider = %s AND identifier = %s";
+	$db_prefix = wsl_get_userprofile_db_prefix();
+	$sql = "SELECT user_id FROM `{$db_prefix}wslusersprofiles` WHERE provider = %s AND identifier = %s";
 
 	return $wpdb->get_var( $wpdb->prepare( $sql, $provider, $provider_uid ) );
 }
@@ -159,7 +167,8 @@ function wsl_get_stored_hybridauth_user_id_by_email_verified( $email_verified )
 {
 	global $wpdb;
 
-	$sql = "SELECT user_id FROM `{$wpdb->prefix}wslusersprofiles` WHERE emailverified = %s";
+	$db_prefix = wsl_get_userprofile_db_prefix();
+	$sql = "SELECT user_id FROM `{$db_prefix}wslusersprofiles` WHERE emailverified = %s";
 
 	return $wpdb->get_var( $wpdb->prepare( $sql, $email_verified ) );
 }
@@ -170,7 +179,8 @@ function wsl_get_stored_hybridauth_user_profile_by_provider_and_provider_uid( $p
 {
 	global $wpdb;
 
-	$sql = "SELECT * FROM `{$wpdb->prefix}wslusersprofiles` WHERE provider = %s AND identifier = %s";
+	$db_prefix = wsl_get_userprofile_db_prefix();
+	$sql = "SELECT * FROM `{$db_prefix}wslusersprofiles` WHERE provider = %s AND identifier = %s";
 
 	return $wpdb->get_results( $wpdb->prepare( $sql, $provider, $provider_uid ) );
 }
@@ -181,7 +191,8 @@ function wsl_get_stored_hybridauth_user_profile_id_by_provider_and_provider_uid(
 {
 	global $wpdb;
 
-	$sql = "SELECT id FROM `{$wpdb->prefix}wslusersprofiles` WHERE provider = '%s' AND identifier = '%s'";
+	$db_prefix = wsl_get_userprofile_db_prefix();
+	$sql = "SELECT id FROM `{$db_prefix}wslusersprofiles` WHERE provider = '%s' AND identifier = '%s'";
 
 	return $wpdb->get_results( $wpdb->prepare( $sql, $provider, $provider_uid ) );
 }
@@ -192,7 +203,8 @@ function wsl_get_stored_hybridauth_user_profiles_by_user_id( $user_id )
 {
 	global $wpdb;
 
-	$sql = "SELECT * FROM `{$wpdb->prefix}wslusersprofiles` where user_id = %d order by provider";
+	$db_prefix = wsl_get_userprofile_db_prefix();
+	$sql = "SELECT * FROM `{$db_prefix}wslusersprofiles` where user_id = %d order by provider";
 
 	return $wpdb->get_results( $wpdb->prepare( $sql, $user_id ) );
 }
@@ -205,7 +217,8 @@ function wsl_store_hybridauth_user_profile( $user_id, $provider, $profile )
 	
 	$wpdb->show_errors(); 
 
-	$sql = "SELECT id, object_sha FROM `{$wpdb->prefix}wslusersprofiles` where user_id = %d and provider = %s and identifier = %s";
+	$db_prefix = wsl_get_userprofile_db_prefix();
+	$sql = "SELECT id, object_sha FROM `{$db_prefix}wslusersprofiles` where user_id = %d and provider = %s and identifier = %s";
 	
 	$rs  = $wpdb->get_results( $wpdb->prepare( $sql, $user_id, $provider, $profile->identifier ) );
 
@@ -265,7 +278,7 @@ function wsl_store_hybridauth_user_profile( $user_id, $provider, $profile )
 		}
 	}
 
-	$wpdb->replace( "{$wpdb->prefix}wslusersprofiles", $table_data ); 
+	$wpdb->replace( "{$db_prefix}wslusersprofiles", $table_data ); 
 
 	return $wpdb->insert_id;
 }
@@ -300,7 +313,8 @@ function wsl_store_hybridauth_user_contacts( $user_id, $provider, $adapter )
 	$user_contacts = null;
 
 	// we only import contacts once
-	$sql = "SELECT COUNT(`id`) FROM {$wpdb->prefix}wsluserscontacts WHERE user_id = %d AND provider = %s ";
+	$db_prefix = wsl_get_userprofile_db_prefix();
+	$sql = "SELECT COUNT(`id`) FROM {$db_prefix}wsluserscontacts WHERE user_id = %d AND provider = %s ";
 
 	$nb_contacts = $wpdb->get_var( $wpdb->prepare( $sql, $user_id, $provider ) );
 
@@ -327,7 +341,7 @@ function wsl_store_hybridauth_user_contacts( $user_id, $provider, $adapter )
 	foreach( $user_contacts as $contact )
 	{
 		$wpdb->insert(
-			"{$wpdb->prefix}wsluserscontacts", 
+			"{$db_prefix}wsluserscontacts", 
 				array( 
 					"user_id"     => $user_id,
 					"provider"    => $provider,
@@ -439,10 +453,11 @@ function wsl_delete_stored_hybridauth_user_data( $user_id )
 {
 	global $wpdb;
 
-	$sql = "DELETE FROM `{$wpdb->prefix}wslusersprofiles` where user_id = %d";
+	$db_prefix = wsl_get_userprofile_db_prefix();
+	$sql = "DELETE FROM `{$db_prefix}wslusersprofiles` where user_id = %d";
 	$wpdb->query( $wpdb->prepare( $sql, $user_id ) );
 
-	$sql = "DELETE FROM `{$wpdb->prefix}wsluserscontacts` where user_id = %d";
+	$sql = "DELETE FROM `{$db_prefix}wsluserscontacts` where user_id = %d";
 	$wpdb->query( $wpdb->prepare( $sql, $user_id ) );
 
 	delete_user_meta( $user_id, 'wsl_current_provider'   );

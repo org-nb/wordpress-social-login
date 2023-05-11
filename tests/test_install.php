@@ -27,10 +27,12 @@ class WSL_Test_Install extends WP_UnitTestCase
 	{
 		global $wpdb;
 
-		$test = $wpdb->get_var( "SHOW TABLES LIKE '{$wpdb->prefix}wslusersprofiles'" );
+		$db_prefix = wsl_get_userprofile_db_prefix();
+
+		$test = $wpdb->get_var( "SHOW TABLES LIKE '{$db_prefix}wslusersprofiles'" );
 		$this->assertEquals( $wpdb->prefix . 'wslusersprofiles', $test );
 
-		$test = $wpdb->get_var( "SHOW TABLES LIKE '{$wpdb->prefix}wsluserscontacts'" );
+		$test = $wpdb->get_var( "SHOW TABLES LIKE '{$db_prefix}wsluserscontacts'" );
 		$this->assertEquals( $wpdb->prefix . 'wsluserscontacts', $test );
 	}
 

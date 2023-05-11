@@ -82,12 +82,14 @@ function wsl_component_watchdog_database()
 
 	global $wpdb;
 
+	$db_prefix = wsl_get_userprofile_db_prefix();
+
 	// If action eq delete WSL user profiles
 	if( isset( $_REQUEST['delete'] ) && isset( $_REQUEST['_wpnonce'] ) && wp_verify_nonce( $_REQUEST['_wpnonce'] ) )
 	{
 		if( $_REQUEST['delete'] == 'log' )
 		{
-			$wpdb->query( "TRUNCATE TABLE {$wpdb->prefix}wslwatchdog" );
+			$wpdb->query( "TRUNCATE TABLE {$db_prefix}wslwatchdog" );
 		}
 	}
 ?>
@@ -110,7 +112,7 @@ function wsl_component_watchdog_database()
 	<hr />
 
 	<?php
-		$list_sessions = $wpdb->get_results( "SELECT user_ip, session_id, provider, max(id) as max_id FROM `{$wpdb->prefix}wslwatchdog` GROUP BY session_id, provider ORDER BY max_id DESC LIMIT 25" );
+		$list_sessions = $wpdb->get_results( "SELECT user_ip, session_id, provider, max(id) as max_id FROM `{$db_prefix}wslwatchdog` GROUP BY session_id, provider ORDER BY max_id DESC LIMIT 25" );
 
 		if( ! $list_sessions )
 		{
@@ -144,7 +146,7 @@ function wsl_component_watchdog_database()
 						<th style="text-align:center">&#916;</th>
 					</tr>
 			<?php
-				$list_calls = $wpdb->get_results( "SELECT * FROM `{$wpdb->prefix}wslwatchdog` WHERE session_id = '$session_id' AND provider = '$provider' ORDER BY id ASC LIMIT 500" );
+				$list_calls = $wpdb->get_results( "SELECT * FROM `{$db_prefix}wslwatchdog` WHERE session_id = '$session_id' AND provider = '$provider' ORDER BY id ASC LIMIT 500" );
 
 				$abandon    = false;
 				$newattempt = false;

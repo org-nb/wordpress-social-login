@@ -3,7 +3,7 @@ Contributors: miled
 Tags: login, register, comment, social login, social networks, facebook, google, twitter, reddit, linkedin, instagram, vkontakte, github, steam, dribbble, twitch.tv
 Requires at least: 3.0
 Tested up to: 6.1
-Stable tag: 3.1.0
+Stable tag: 3.1.1
 License: MIT License
 License URI: http://opensource.org/licenses/MIT
 Donate link: https://www.redcross.org/quickdonate/index.jsp
@@ -67,6 +67,9 @@ The user guide and frequently asked questions can be found at http://miled.githu
 
 == Changelog ==
 
+
+= 3.1.1 =
+* Made database access aware of multisite network activation
 
 = 3.1.0 =
 

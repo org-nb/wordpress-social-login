@@ -28,9 +28,10 @@ function wsl_database_install()
 
 	$charset_collate = $wpdb->get_charset_collate();
 
+	$db_prefix = wsl_get_userprofile_db_prefix();
 	// create wsl tables
-	$wslusersprofiles = "{$wpdb->prefix}wslusersprofiles";
-	$wsluserscontacts = "{$wpdb->prefix}wsluserscontacts";
+	$wslusersprofiles = "{$db_prefix}wslusersprofiles";
+	$wsluserscontacts = "{$db_prefix}wsluserscontacts";
 
 	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
@@ -89,11 +90,13 @@ function wsl_database_uninstall()
 	global $wpdb;
 	global $WORDPRESS_SOCIAL_LOGIN_PROVIDERS_CONFIG;
 
+	$db_prefix = wsl_get_userprofile_db_prefix();
+
 	// 1. Delete wslusersprofiles, wsluserscontacts and wslwatchdog
 
-	$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}wslusersprofiles" );
-	$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}wsluserscontacts" );
-	$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}wslwatchdog" );
+	$wpdb->query( "DROP TABLE IF EXISTS {$db_prefix}wslusersprofiles" );
+	$wpdb->query( "DROP TABLE IF EXISTS {$db_prefix}wsluserscontacts" );
+	$wpdb->query( "DROP TABLE IF EXISTS {$db_prefix}wslwatchdog" );
 
 	// 2. Delete user metadata from usermeta
 

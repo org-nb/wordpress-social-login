@@ -13,6 +13,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 function wsl_component_tools_do_diagnostics()
 {
+	$db_prefix = wsl_get_userprofile_db_prefix();
 ?>
 <style>
 	table td, table th { border: 1px solid #DDDDDD; }
@@ -279,8 +280,9 @@ function wsl_component_tools_do_diagnostics()
 				<?php
 					global $wpdb;
 
-					$db_check_profiles = $wpdb->get_var( "SHOW TABLES LIKE '{$wpdb->prefix}wslusersprofiles'" ) === $wpdb->prefix . 'wslusersprofiles' ? 1 : 0;
-					$db_check_contacts = $wpdb->get_var( "SHOW TABLES LIKE '{$wpdb->prefix}wsluserscontacts'" ) === $wpdb->prefix . 'wsluserscontacts' ? 1 : 0;
+					$db_prefix = wsl_get_userprofile_db_prefix();
+					$db_check_profiles = $wpdb->get_var( "SHOW TABLES LIKE '{$db_prefix}wslusersprofiles'" ) === $wpdb->prefix . 'wslusersprofiles' ? 1 : 0;
+					$db_check_contacts = $wpdb->get_var( "SHOW TABLES LIKE '{$db_prefix}wsluserscontacts'" ) === $wpdb->prefix . 'wsluserscontacts' ? 1 : 0;
 
 					$test = $db_check_profiles && $db_check_contacts ? true : false;
 				?>
@@ -738,6 +740,7 @@ function wsl_component_tools_do_sysinfo()
 	global $WORDPRESS_SOCIAL_LOGIN_COMPONENTS;
 	global $WORDPRESS_SOCIAL_LOGIN_ADMIN_TABS;
 	global $WORDPRESS_SOCIAL_LOGIN_PROVIDERS_CONFIG;
+	$db_prefix = wsl_get_userprofile_db_prefix();
 ?>
 <div class="metabox-holder columns-2" id="post-body">
 	<div class="stuffbox">
@@ -759,8 +762,8 @@ PLUGIN_URL:               <?php echo plugins_url() . "\n"; ?>
 # WORDPRESS SOCIAL LOGIN
 
 WSL VERSION:              <?php echo $WORDPRESS_SOCIAL_LOGIN_VERSION . "\n"; ?>
-WSL PROFILES TABLE:       <?php echo $wpdb->get_var( "SHOW TABLES LIKE '{$wpdb->prefix}wslusersprofiles'" ) . ' (' . $wpdb->get_var( "SELECT COUNT( * ) FROM {$wpdb->prefix}wslusersprofiles" ) . ")\n"; ?>
-WSL CONTACTS TABLE:       <?php echo $wpdb->get_var( "SHOW TABLES LIKE '{$wpdb->prefix}wsluserscontacts'" ) . ' (' . $wpdb->get_var( "SELECT COUNT( * ) FROM {$wpdb->prefix}wsluserscontacts" ) . ")\n"; ?>
+WSL PROFILES TABLE:       <?php echo $wpdb->get_var( "SHOW TABLES LIKE '{$db_prefix}wslusersprofiles'" ) . ' (' . $wpdb->get_var( "SELECT COUNT( * ) FROM {$db_prefix}wslusersprofiles" ) . ")\n"; ?>
+WSL CONTACTS TABLE:       <?php echo $wpdb->get_var( "SHOW TABLES LIKE '{$db_prefix}wsluserscontacts'" ) . ' (' . $wpdb->get_var( "SELECT COUNT( * ) FROM {$db_prefix}wsluserscontacts" ) . ")\n"; ?>
 WSL COMPONENTS:           <?php foreach( $WORDPRESS_SOCIAL_LOGIN_COMPONENTS as $name => $settings ){ if( $settings["enabled"] ){ echo strtoupper( $name ) . ' '; } } echo "\n"; ?>
 WSL TABS:                 <?php foreach( $WORDPRESS_SOCIAL_LOGIN_ADMIN_TABS as $name => $settings ){ if( $settings["enabled"] && $settings["visible"] ){ echo strtoupper( $name ) . ' '; } } echo "\n"; ?>
 WSL NETWORKS:             <?php foreach( $WORDPRESS_SOCIAL_LOGIN_PROVIDERS_CONFIG as $provider ){ if( get_option( 'wsl_settings_' . $provider['provider_id'] . '_enabled' ) ){ echo strtoupper( $provider['provider_id'] ) . ' '; } } echo "\n"; ?>
@@ -875,9 +878,10 @@ function wsl_component_tools_do_repair()
 	</div>
 </div>
 <?php
+	$db_prefix = wsl_get_userprofile_db_prefix();
 	# ain't this clever :p
-	$db_check_profiles = $wpdb->get_var( "SHOW TABLES LIKE '{$wpdb->prefix}wslusersprofiles'" ) === $wpdb->prefix . 'wslusersprofiles' ? 1 : 0;
-	$db_check_contacts = $wpdb->get_var( "SHOW TABLES LIKE '{$wpdb->prefix}wsluserscontacts'" ) === $wpdb->prefix . 'wsluserscontacts' ? 1 : 0;
+	$db_check_profiles = $wpdb->get_var( "SHOW TABLES LIKE '{$db_prefix}wslusersprofiles'" ) === $wpdb->prefix . 'wslusersprofiles' ? 1 : 0;
+	$db_check_contacts = $wpdb->get_var( "SHOW TABLES LIKE '{$db_prefix}wsluserscontacts'" ) === $wpdb->prefix . 'wsluserscontacts' ? 1 : 0;
 
 	if( $db_check_profiles && $db_check_contacts )
 	{

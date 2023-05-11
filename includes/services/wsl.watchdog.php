@@ -102,7 +102,9 @@ function wsl_watchdog_log_to_database( $action_name, $action_args = array(), $us
 {
 	global $wpdb;
 
-	$sql = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}wslwatchdog` ( 
+	$db_prefix = wsl_get_userprofile_db_prefix();
+
+$sql = "CREATE TABLE IF NOT EXISTS `{$db_prefix}wslwatchdog` ( 
 			  `id` int(11) NOT NULL AUTO_INCREMENT,
 			  `session_id` varchar(50) NOT NULL,
 			  `user_id` int(11) NOT NULL,
@@ -119,7 +121,7 @@ function wsl_watchdog_log_to_database( $action_name, $action_args = array(), $us
 	$wpdb->query( $sql );
 
 	$wpdb->insert(
-		"{$wpdb->prefix}wslwatchdog", 
+		"{$db_prefix}wslwatchdog", 
 			array( 
 				"session_id"    => session_id(),
 				"user_id"       => $user_id,

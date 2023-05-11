@@ -204,8 +204,9 @@ function wsl_update_compatibilities()
 
 	global $wpdb;
 
+	$db_prefix = wsl_get_userprofile_db_prefix();
 	# migrate steam users id to id64. Prior to 2.2
-	$sql = "UPDATE {$wpdb->prefix}wslusersprofiles
+	$sql = "UPDATE {$db_prefix}wslusersprofiles
 		SET identifier = REPLACE( identifier, 'http://steamcommunity.com/openid/id/', '' )
 		WHERE provider = 'Steam' AND identifier like 'http://steamcommunity.com/openid/id/%' ";
 	$wpdb->query( $sql );

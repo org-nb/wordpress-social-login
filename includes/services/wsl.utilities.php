@@ -439,3 +439,14 @@ function wsl_generate_backtrace()
 }
 
 // --------------------------------------------------------------------
+
+/**
+* Get the db prefix for WSL user profile or user contacts tables
+*/
+function wsl_get_userprofile_db_prefix()
+{
+	global $wpdb;
+	global $WORDPRESS_SOCIAL_LOGIN_NETWORKACTIVE;
+
+	return $WORDPRESS_SOCIAL_LOGIN_NETWORKACTIVE ? $wpdb->base_prefix : $wpdb->prefix;
+}

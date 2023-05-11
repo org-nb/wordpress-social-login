@@ -3,7 +3,7 @@
 Plugin Name: WordPress Social Login
 Plugin URI: http://miled.github.io/wordpress-social-login/
 Description: Allow your visitors to comment and login with social networks such as Twitter, Facebook, Google, Yahoo and more.
-Version: 3.1.0
+Version: 3.1.1
 Author: Miled
 Author URI: https://github.com/miled
 License: MIT License
@@ -66,7 +66,7 @@ global $WORDPRESS_SOCIAL_LOGIN_PROVIDERS_CONFIG;
 global $WORDPRESS_SOCIAL_LOGIN_COMPONENTS;
 global $WORDPRESS_SOCIAL_LOGIN_ADMIN_TABS;
 
-$WORDPRESS_SOCIAL_LOGIN_VERSION = "3.1.0";
+$WORDPRESS_SOCIAL_LOGIN_VERSION = "3.1.1";
 
 // --------------------------------------------------------------------
 
@@ -103,6 +103,9 @@ defined( 'WORDPRESS_SOCIAL_LOGIN_PLUGIN_URL' )
 defined( 'WORDPRESS_SOCIAL_LOGIN_HYBRIDAUTH_ENDPOINT_URL' )
 	|| define( 'WORDPRESS_SOCIAL_LOGIN_HYBRIDAUTH_ENDPOINT_URL', WORDPRESS_SOCIAL_LOGIN_PLUGIN_URL . 'hybridauth/' );
 
+// Ugly but quick approach to make plugin aware of multisite network activation
+global $WORDPRESS_SOCIAL_LOGIN_NETWORKACTIVE;
+$WORDPRESS_SOCIAL_LOGIN_NETWORKACTIVE = is_plugin_active_for_network( plugin_basename(__FILE__) );
 // --------------------------------------------------------------------
 
 /**
