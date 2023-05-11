@@ -4,8 +4,9 @@
 
 **DISCLAIMER**
 
-This is an updated version of Wordpress Social Login (originally made by [miled](https://github.com/miled/wordpress-social-login))
+This is forked from [Linrador](https://github.com/Linrador/wordpress-social-login)'s fork of the original Wordpress Social Login by [miled](https://github.com/miled/wordpress-social-login).
 
+- v.3.1.1 Adds support for network-activated multisite installation
 
 
 Original readme:
