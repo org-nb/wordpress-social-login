@@ -200,10 +200,14 @@ function wsl_admin_ui_header( $wslp = null )
 	?>
 
 	<div class="alignright">
-		<a style="font-size: 0.9em; text-decoration: none;" target="_blank" href="http://miled.github.io/wordpress-social-login/documentation.html"><?php _wsl_e('Docs', 'wordpress-social-login') ?></a> -
+		<?php 
+			$githubhomeurl =  "https://github.com/miled"; // original
+			$githubhomeurl =  "https://github.com/org-nb"; // current fork
+		?>
+		<a style="font-size: 0.9em; text-decoration: none;" target="_blank" href="<?php echo $githubhomeurl ?>/wordpress-social-login/documentation.html"><?php _wsl_e('Docs', 'wordpress-social-login') ?></a> -
 		<a style="font-size: 0.9em; text-decoration: none;" target="_blank" href="http://miled.github.io/wordpress-social-login/support.html"><?php _wsl_e('Support', 'wordpress-social-login') ?></a> -
 		<a style="font-size: 0.9em; text-decoration: none;" target="_blank" href="https://github.com/miled/wordpress-social-login"><?php _wsl_e('Github', 'wordpress-social-login') ?></a> -
-		<a style="font-size: 0.9em; text-decoration: none;" target="_blank" href="https://github.com/linrador"><?php _wsl_e('Modified by Linrador', 'wordpress-social-login') ?></a>
+		<a style="font-size: 0.9em; text-decoration: none;" target="_blank" href="https://github.com/org-nb/wordpress-social-login"><?php _wsl_e('Modified by', 'wordpress-social-login') ?>  Nalandabodhi</a>
 	</div>
 
 	<h1 <?php if( is_rtl() ) echo 'style="margin: 20px 0;"'; ?>>
