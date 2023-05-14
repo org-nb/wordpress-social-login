@@ -127,7 +127,7 @@ function wsl_component_networks_sidebar_basic_insights()
 {
 	GLOBAL $WORDPRESS_SOCIAL_LOGIN_PROVIDERS_CONFIG;
 
-	$assets_base_url = WORDPRESS_SOCIAL_LOGIN_PLUGIN_URL . 'assets/img/32x32/icondock/';
+	$assets_base_url = WORDPRESS_SOCIAL_LOGIN_PLUGIN_URL . 'assets/img/32x32/wpzoom/';
 ?>
 <div class="postbox">
 	<div class="inside">
