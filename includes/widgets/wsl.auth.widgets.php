@@ -84,6 +84,11 @@ function wsl_render_auth_widget( $args = array() )
 
 	// Icon set. If eq 'none', we show text instead
 	$social_icon_set = get_option( 'wsl_settings_social_icon_set' );
+	$include_provider_name = false;
+	if (substr( $social_icon_set, -5 ) === '+name' ) {
+		$social_icon_set = substr($social_icon_set, 0, -5);
+		$include_provider_name = true;
+	}
 
 	// wpzoom icons set, is shown by default
 	if( empty( $social_icon_set ) )
@@ -191,7 +196,7 @@ function wsl_render_auth_widget( $args = array() )
 	$wsl_settings_use_popup = get_option( 'wsl_settings_use_popup' );
 
 	// if a user is visiting using a mobile device, WSL will fall back to more in page
-	$wsl_settings_use_popup = function_exists( 'wp_is_mobile' ) ? wp_is_mobile() ? 2 : $wsl_settings_use_popup : $wsl_settings_use_popup;
+	$wsl_settings_use_popup = function_exists( 'wp_is_mobile' ) ? (wp_is_mobile() ? 2 : $wsl_settings_use_popup) : $wsl_settings_use_popup;
 
 	$no_idp_used = true;
 
@@ -250,7 +255,9 @@ function wsl_render_auth_widget( $args = array() )
 
 		<a rel="nofollow" href="<?php echo $authenticate_url; ?>" title="<?php echo sprintf( _wsl__("Connect with %s", 'wordpress-social-login'), $provider_name ) ?>" class="wp-social-login-provider wp-social-login-provider-<?php echo strtolower( $provider_id ); ?>" data-provider="<?php echo $provider_id ?>" role="button">
 			<?php if( $social_icon_set == 'none' ){ echo apply_filters( 'wsl_render_auth_widget_alter_provider_name', $provider_name ); } else { ?><img alt="<?php echo $provider_name ?>" src="<?php echo $assets_base_url . strtolower( $provider_id ) . '.png' ?>" aria-hidden="true" /><?php } ?>
-
+			<?php if( $include_provider_name ) { ?>
+			<span class='wsl-provider-label'><?php echo sprintf( _wsl__("Connect with %s", 'wordpress-social-login'), $provider_name ) ?></span>
+			 <?php } ?>
 		</a>
 <?php
 			}
@@ -547,7 +554,7 @@ function wsl_add_javascripts()
 	$wsl_settings_use_popup = get_option( 'wsl_settings_use_popup' );
 
     // if a user is visiting using a mobile device, WSL will fall back to more in page
-	$wsl_settings_use_popup = function_exists( 'wp_is_mobile' ) ? wp_is_mobile() ? 2 : $wsl_settings_use_popup : $wsl_settings_use_popup;
+	$wsl_settings_use_popup = function_exists( 'wp_is_mobile' ) ? (wp_is_mobile() ? 2 : $wsl_settings_use_popup) : $wsl_settings_use_popup;
 
 	if( $wsl_settings_use_popup != 1 )
 	{

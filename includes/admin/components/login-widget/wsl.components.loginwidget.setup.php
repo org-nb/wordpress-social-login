@@ -99,7 +99,8 @@ function wsl_component_loginwidget_setup_basic_settings()
 						foreach( $icon_sets as $folder => $label )
 						{
 							?>
-								<option <?php if( $wsl_settings_social_icon_set == $folder ) echo "selected"; ?>   value="<?php echo $folder; ?>"><?php _wsl_e( $label, 'wordpress-social-login' ) ?></option>
+								<option <?php if( $wsl_settings_social_icon_set == $folder ) echo "selected"; ?>   value="<?php echo $folder; ?>"><?php _wsl_e( $label, 'wordpress-social-login' ); echo ' ('; _wsl_e( 'icon only', 'wordpress-social-login' ); echo ')'; ?></option>
+								<option <?php if( $wsl_settings_social_icon_set == $folder.'+name' ) echo "selected"; ?>   value="<?php echo $folder.'+name'; ?>"><?php _wsl_e( $label, 'wordpress-social-login' ); echo ' ('; _wsl_e( 'icon and provider name', 'wordpress-social-login' ); echo ')'; ?></option>
 							<?php
 						}
 					?>
