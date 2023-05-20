@@ -86,6 +86,10 @@ $WORDPRESS_SOCIAL_LOGIN_PROVIDERS_CONFIG = ARRAY(
 		"callback"          => true,
 		"new_app_link"      => "https://disqus.com/api/applications/",
 	),
+	/* -- Facebook no longer allows Instagram for social login. See:
+		// https://stackoverflow.com/a/72632950
+		// https://auth0.com/docs/troubleshoot/product-lifecycle/past-migrations/instagram-connection-deprecation
+		// and elsewhere
 	ARRAY(
 		"provider_id"       => "Instagram",
 		"provider_name"     => "Instagram",
@@ -93,6 +97,7 @@ $WORDPRESS_SOCIAL_LOGIN_PROVIDERS_CONFIG = ARRAY(
 		"require_client_id" => true,
 		"new_app_link"      => "http://instagr.am/developer/clients/manage/",
 	),
+	*/
 	ARRAY(
 		"provider_id"       => "Reddit",
 		"provider_name"     => "Reddit",

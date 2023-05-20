@@ -25,7 +25,7 @@ Wordpress Social Login come with a simple but flexible and fully customizable au
 Depending on the audience you're targeting, you can choose from a wide variety of providers and services including: Social networks, Microblogging platforms, Professional networks, Media, Photo sharing, Programmers and Gamers networks.
 
 <strong>Currently supported providers</strong><br>
-Facebook, Google, Twitter, Windows Live, Yahoo!, LinkedIn, Reddit, Disqus, Tumblr, Stackoverflow, GitHub, Dribbble, Instagram, 500px, Foursquare, Steam, Twitch.tv, Mixi, Vkontakte, Mail.ru, Yandex, Odnoklassniki, Goodreads, Skyrock, Last.fm, AOL and PixelPin.
+Apple, Facebook, Google, Twitter, Windows Live, Yahoo!, LinkedIn, Reddit, Disqus, Tumblr, Stackoverflow, GitHub, Dribbble, 500px, Foursquare, Steam, Twitch.tv, Mixi, Vkontakte, Mail.ru, Yandex, Odnoklassniki, Goodreads, Skyrock, Last.fm, AOL and PixelPin.
 
 <strong>Free, unlimited and white-label</strong> <br>
 Wordpress Social Login is open-source and completely free. The source code is publicly available on [GitHub](https://github.com/hybridauth/WordPress-Social-Login) for anyone to help and contribute. You are free to use a Wordpress Social Login in commercial projects as long as the copyright header is left intact.
@@ -70,6 +70,8 @@ The user guide and frequently asked questions can be found at http://miled.githu
 
 = 3.1.1 =
 * Made database access aware of multisite network activation
+* Added "icon + name" option to widget format options
+* Removed Instagram as a provider (now disallowed for authentication by Facebook)
 
 = 3.1.0 =
 
