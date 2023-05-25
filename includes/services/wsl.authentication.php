@@ -929,31 +929,23 @@ function wsl_process_login_build_provider_config( $provider )
 		{
 			$config["providers"][$provider]["display"] = "page";
 		}
-
-		$config["providers"][$provider]["scope"] = "email, public_profile";
 	}
 
-	// set custom config for google
-	if( strtolower( $provider ) == "google" )
+	// get scope from provider array
+	$provider_scope = null;
+	$provider_settings = wsl_get_provider_settings_by_id($provider);
+	if ($provider_settings && isset($provider_settings['scope'])) 
 	{
-		$config["providers"][$provider]["scope"] = "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email";
+		$provider_scope = $provider_settings['scope'];
+		$config["providers"][$provider]["scope"] = $provider_scope;
 	}
-
-	// set custom config for linkedin
-	if( strtolower( $provider ) == "linkedin" )
-	{
-		$config["providers"][$provider]["scope"] = "r_liteprofile r_emailaddress";
-	}
-
-	$provider_scope = isset( $config["providers"][$provider]["scope"] ) ? $config["providers"][$provider]["scope"] : null ;
 
 	// HOOKABLE: allow to overwrite scopes
-    $provider_scope = apply_filters( 'wsl_hook_alter_provider_scope', $provider_scope, $provider );
+	$new_provider_scope = apply_filters('wsl_hook_alter_provider_scope', $provider_scope, $provider);
 
-    // XXX: Scope needs to be diffrent than null.
-    if($provider_scope !== null){
-        $config["providers"][$provider]["scope"] = $provider_scope;
-    }
+	if ($new_provider_scope !== $provider_scope) {
+		$config["providers"][$provider]["scope"] = $new_provider_scope;
+	}
 
 	// HOOKABLE: allow to overwrite hybridauth config for the selected provider
 	$config["providers"][$provider] = apply_filters( 'wsl_hook_alter_provider_config', $config["providers"][$provider], $provider );
@@ -1164,6 +1156,24 @@ function wsl_get_provider_name_by_id( $provider_id)
         }
 
         return $provider_id;
+}
+
+// --------------------------------------------------------------------
+
+/**
+* Returns provider settings by provider ID
+*/
+function wsl_get_provider_settings_by_id( $provider_id)
+{
+        global $WORDPRESS_SOCIAL_LOGIN_PROVIDERS_CONFIG;
+
+        foreach( $WORDPRESS_SOCIAL_LOGIN_PROVIDERS_CONFIG as $provider_settings ) {
+                if ( $provider_settings['provider_id'] == $provider_id ) {
+                        return $provider_settings;
+                }
+        }
+
+        return NULL;
 }
 
 // --------------------------------------------------------------------

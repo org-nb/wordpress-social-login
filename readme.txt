@@ -72,6 +72,9 @@ The user guide and frequently asked questions can be found at http://miled.githu
 * Made database access aware of multisite network activation
 * Added "icon + name" option to widget format options
 * Removed Instagram as a provider (now disallowed for authentication by Facebook)
+* Adjusted Yahoo! scope so email and verified email is returned
+* Moved provider custom scope settings to providers array
+* Updated instructions on widget configuration page
 
 = 3.1.0 =
 

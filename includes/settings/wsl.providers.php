@@ -30,6 +30,7 @@ $WORDPRESS_SOCIAL_LOGIN_PROVIDERS_CONFIG = ARRAY(
 		"provider_name"     => "Facebook",
 		"require_client_id" => true,
 		"callback"          => true,
+		"scope"             => "email, public_profile",
 		"new_app_link"      => "https://developers.facebook.com/apps",
 
 		"default_network"   => true,
@@ -39,6 +40,7 @@ $WORDPRESS_SOCIAL_LOGIN_PROVIDERS_CONFIG = ARRAY(
 		"provider_name"     => "Google",
 		"callback"          => true,
 		"require_client_id" => true,
+		"scope"             => "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
 		"new_app_link"      => "https://console.developers.google.com",
 
 		"default_network"   => true,
@@ -70,6 +72,7 @@ $WORDPRESS_SOCIAL_LOGIN_PROVIDERS_CONFIG = ARRAY(
 		"provider_name"     => "Yahoo!",
 		"require_client_id" => true,
 		"callback"          => true,
+		"scope"             => "openid email openid2",
 		"new_app_link"      => "https://developer.yahoo.com/apps/create/",
 	),
 	ARRAY(
@@ -77,6 +80,7 @@ $WORDPRESS_SOCIAL_LOGIN_PROVIDERS_CONFIG = ARRAY(
 		"provider_name"     => "LinkedIn",
 		"require_client_id" => true,
 		"callback"          => true,
+		"scope"             => "r_liteprofile r_emailaddress",
 		"new_app_link"      => "https://www.linkedin.com/secure/developer",
 	),
 	ARRAY(
