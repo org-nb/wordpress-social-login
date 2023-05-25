@@ -72,7 +72,7 @@ $WORDPRESS_SOCIAL_LOGIN_PROVIDERS_CONFIG = ARRAY(
 		"provider_name"     => "Yahoo!",
 		"require_client_id" => true,
 		"callback"          => true,
-		"scope"             => "openid email openid2",
+		"scope"             => "openid profile email openid2",
 		"new_app_link"      => "https://developer.yahoo.com/apps/create/",
 	),
 	ARRAY(
