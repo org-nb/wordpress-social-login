@@ -367,7 +367,8 @@ function wsl_process_login_end()
 *    1. Grab the user profile from hybridauth
 *    2. Run Bouncer::Filters if enabled (domains, emails, profiles urls)
 *    3. Check if user exist in database by looking for the couple (Provider name, Provider user ID) or verified email
-*    4. Deletegate detection of user id to custom functions / hooks
+*    4. Delegate detection of user id to custom functions / hooks
+*    4B. For WP multisite, add user to the current blog if permitted; else stop
 *    5. If Bouncer::Profile Completion is enabled and user didn't exist, we require the user to complete the registration (user name & email)
 */
 function wsl_process_login_get_user_data( $provider, $redirect_to )
@@ -508,10 +509,26 @@ function wsl_process_login_get_user_data( $provider, $redirect_to )
 		}
 	}
 
-	/* 4 Deletegate detection of user id to custom filters hooks */
+	/* 4 Delegate detection of user id to custom filters hooks */
 
 	// HOOKABLE:
 	$user_id = apply_filters( 'wsl_hook_process_login_alter_user_id', $user_id, $provider, $hybridauth_user_profile );
+
+	// 4B For WordPress multisite: does user belong to this blog?
+	if ($user_id && is_multisite() && !is_user_member_of_blog($user_id)) 
+	{
+		// if registration is enabled, we can add the user to this blog
+		$add_to_blog = get_option( 'wsl_settings_bouncer_registration_enabled' ) === "1";
+		// HOOKABLE:
+		$add_to_blog = apply_filters( 'wsl_hook_process_multisite_add_user_to_blog', $add_to_blog, $user_id, $provider, $hybridauth_user_profile );
+		if (!$add_to_blog) {
+			// If registration is disallowed, go no further, 
+			// since none of the other Bouncer features apply.
+			return wsl_process_login_render_notice_page( _wsl__( "Registration for this site is closed.", 'wordpress-social-login' ) );
+		}
+		// Proceed to add to blog
+		add_user_to_blog(get_current_blog_id(), $user_id, get_option('default_role'));
+	}
 
 	/* 5. If Bouncer::Profile Completion is enabled and user didn't exist, we require the user to complete the registration (user name & email) */
 	if( ! $user_id )
